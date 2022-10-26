@@ -12,13 +12,61 @@ When the user quits print an end game message and their win/loss/tie record
 
 '''
 
+import random
+done = False
+loss = 0
+wins = 0
+ties = 0
+print("Welcome to Rock, Paper, Scissors! Today we will be testing your skills")
+print("If you give up and quit, press \"4\"")
 
+while not done:
 
+    x = random.randint(1,3)
 
+    print("1.) Rock")
+    print("2.) Paper")
+    print("3.) Scissors")
 
+    play = int(input("Pick a number"))
+    if play == 4:
+        done = True
 
+        print("")
+        print("Goodbye")
 
+    else:
+        if play == x:
+            print("You tied!")
+            ties += 1
+            if x == 1:
+                print("We both picked Rock!\n")
+            elif x == 2:
+                print("We both picked Paper!\n")
+            else:
+                print("We both picked Scissors!\n")
+        elif play == 1 and x == 2 or play == 2 and x == 3 or play == 3 and x == 1:
+            print("You win!")
+            wins += 1
+            if x == 1:
+                print("You Picked Paper! The computer chose Rock!\n")
+            elif x == 2:
+                print("You picked Scissors! The computer chose Paper!\n")
+            else:
+                print("You picked Rock! The computer chose Scissors!\n")
+        elif play == 1 and x == 3 or play == 2 and x == 1 or play == 3 and x == 1:
+            print("Tough luck, You lose.")
+            loss += 1
+            if x == 1:
+                print("You selected Scissors, and the computer chose Rock.\n")
+            elif x == 2:
+                print("You selected Rock, and the computer chose paper.\n")
+            else:
+                print("You selected paper, and the computer chose Scissors.\n")
+        else:
+            print("That was not an option, you may try again or quit.")
 
-
-
+print("You had",wins,"wins!")
+print("You had",loss,"losses!")
+print("You had",ties,"ties!\n")
 
